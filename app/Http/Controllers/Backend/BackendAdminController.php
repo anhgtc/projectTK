@@ -7,5 +7,8 @@ use Illuminate\Http\Request;
 
 class BackendAdminController extends Controller
 {
-    //
+    public function login()
+    {
+        //
+    }
 }

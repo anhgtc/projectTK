@@ -9,89 +9,97 @@ use App\Http\Controllers\Backend\BackendCommentController;
 use Illuminate\Support\Facades\Route;
 //Backend
 Route::group(['namespace'=>'Backend', 'prefix'=>'admin'], function(){
-    //Trang chủ
+    //Home
     Route::get('',[BackendHomeController::class,'index'])->name('backend.home');
-    //Admin đăng nhập
+    //Admin Login
     Route::get('/login',[BackendAdminController::class, 'login'])
         ->name('backend.adminlogin');
-    //Admin đăng xuất
+    //Admin Logout
     Route::get('/logout',[BackendAdminController::class, 'logout'])
         ->name('backend.adminlogout');
 
-    //Quản lí các thể loại
+    //Categories
     Route::prefix('category')->group(function(){
-        //Hiển thị tất cả thể loại
+        //View all
         Route::get('',[BackendCategoryController::class,'index'])
             ->name('backend_category.index');
-        //Thêm mới thể loại
-        Route::get('/create',[BackendCategoryController::class,'create'])
+        //Create
+        Route::get('/viewcreate',[BackendCategoryController::class,'create'])
+            ->name('backend_category.viewcreate');
+        Route::post('/create',[BackendCategoryController::class,'store'])
             ->name('backend_category.create');
-        //Hiển thị chi tiết thể loại
+        //View detail
         // Route::get('/{id}',[BackendCategoryController::class,'show'])
         //     ->name('backend_category.show');
-        //Sửa
+        //Edit
         // Route::get('/{id}/edit',[BackendCategoryController::class,'edit'])
         //     ->name('backend_category.edit');
-        // Route::put('/{id}',[BackendCategoryController::class, 'update'])
+        // Route::post('/{id}',[BackendCategoryController::class, 'update'])
         //     ->name('backend_category.update');
-        //Xóa thể loại
+        //Delete
         // Route::delete('/{id}/delete',[BackendCategoryController::class,'destroy'])
         //     ->name('backend_category.destroy');
     });
-    //Quản lí người dùng
+    //Users
     Route::prefix('user')->group(function(){
-        //Hiển thị tất cả người dùng
+        //View user
         Route::get('',[BackendUserController::class,'index'])
             ->name('backend_user.index');
-        //Thêm mới người dùng
-        Route::get('/create',[BackendUserController::class,'create'])
+        //Create user
+        Route::get('/viewcreate',[BackendUserController::class,'create'])
+            ->name('backend_user.viewcreate');
+        Route::post('/create',[BackendUserController::class,'store'])
             ->name('backend_user.create');
-        //Hiển thị chi tiết người dùng
+        //View user's detail
         // Route::get('/{id}',[BackendUserController::class,'show'])
         //     ->name('backend_user.show');
-        //Sửa thông tin người dùng
+        //Edit user's detail
         // Route::get('/{id}/edit',[BackendUserController::class,'edit'])
         //     ->name('backend_user.edit');
-        // Route::put('/{id}',[BackendUserController::class, 'update'])
+        // Route::post('/{id}',[BackendUserController::class, 'update'])
         //     ->name('backend_user.update');
-        //Xóa người dùng
+        //Delete user
         // Route::delete('/{id}/delete',[BackendUserController::class,'destroy'])
         //     ->name('backend_user.destroy');
     });
-    //Quản lí bài viết
+    //Posts
     Route::prefix('post')->group(function(){
-        //Hiển thị tất cả bài viết
+        //View all post
         Route::get('',[BackendPostController::class,'index'])
             ->name('backend_post.index');
-        //Thêm mới bài viết
-        Route::get('/create',[BackendPostController::class,'create'])
+        //Create post
+        Route::get('/viewcreate',[BackendPostController::class,'create'])
+            ->name('backend_post.viewcreate');
+        Route::post('/create',[BackendCategoryController::class,'store'])
             ->name('backend_post.create');
-        //Hiển thị chi tiết bài viết
+        //View post's detail
         // Route::get('/{id}',[BackendPostController::class,'show'])
         //     ->name('backend_post.show');
-        //Sửa bài viết
+        //Edit post
         // Route::get('/{id}/edit',[BackendPostController::class,'edit'])
         //     ->name('backend_post.edit');
         // Route::put('/{id}',[BackendPostController::class, 'update'])
         //     ->name('backend_post.update');
-        //Xóa bài viết
+        //Delete post
         // Route::delete('/{id}/delete',[BackendPostController::class,'destroy'])
         //     ->name('backend_post.destroy');
     });
-    //Quản lí bình luận
+    //Comments
     Route::prefix('comment')->group(function(){
-        //Thêm bình luận mới
+        //Create new comment
         Route::get('/create',[BackendCommentController::class,'create'])
             ->name('backend_comment.create');
-        //Hiển thị bình luận theo bài viết
+        Route::get('/store',[BackendCommentController::class,'store'])
+            ->name('backend_comment.store');
+        //View comment
         // Route::get('/{id}',[BackendCommentController::class,'show'])
         //     ->name('backend_comment.show');
-        //Sửa bình luận
+        //Edit comment
         // Route::get('/{id}/edit',[BackendCommentController::class,'edit'])
         //     ->name('backend_comment.edit');
         // Route::put('/{id}',[BackendCommentController::class, 'update'])
         //     ->name('backend_comment.update');
-        //Xóa bình luận
+        //Delete comment
         // Route::delete('/{id}/delete',[BackendCommentController::class,'destroy'])
         //     ->name('backend_comment.destroy');
     });
