@@ -51,16 +51,16 @@ Route::group(['namespace'=>'Backend', 'prefix'=>'admin'], function(){
         Route::post('/create',[BackendUserController::class,'store'])
             ->name('backend_user.create');
         //View user's detail
-        // Route::get('/{id}',[BackendUserController::class,'show'])
-        //     ->name('backend_user.show');
+        Route::get('/{id}',[BackendUserController::class,'show'])
+            ->name('backend_user.show');
         //Edit user's detail
-        // Route::get('/{id}/edit',[BackendUserController::class,'edit'])
-        //     ->name('backend_user.edit');
-        // Route::post('/{id}',[BackendUserController::class, 'update'])
-        //     ->name('backend_user.update');
+        Route::get('/{id}/edit',[BackendUserController::class,'edit'])
+            ->name('backend_user.edit');
+        Route::get('/{id}',[BackendUserController::class, 'update'])
+            ->name('backend_user.update');
         //Delete user
-        // Route::delete('/{id}/delete',[BackendUserController::class,'destroy'])
-        //     ->name('backend_user.destroy');
+        Route::get('/{id}/delete',[BackendUserController::class,'destroy'])
+            ->name('backend_user.destroy');
     });
     //Posts
     Route::prefix('post')->group(function(){
@@ -73,16 +73,16 @@ Route::group(['namespace'=>'Backend', 'prefix'=>'admin'], function(){
         Route::post('/create',[BackendCategoryController::class,'store'])
             ->name('backend_post.create');
         //View post's detail
-        // Route::get('/{id}',[BackendPostController::class,'show'])
-        //     ->name('backend_post.show');
+        Route::get('/{id}',[BackendPostController::class,'show'])
+            ->name('backend_post.show');
         //Edit post
-        // Route::get('/{id}/edit',[BackendPostController::class,'edit'])
-        //     ->name('backend_post.edit');
-        // Route::put('/{id}',[BackendPostController::class, 'update'])
-        //     ->name('backend_post.update');
+        Route::get('/{id}/edit',[BackendPostController::class,'edit'])
+            ->name('backend_post.edit');
+        Route::put('/{id}',[BackendPostController::class, 'update'])
+            ->name('backend_post.update');
         //Delete post
-        // Route::delete('/{id}/delete',[BackendPostController::class,'destroy'])
-        //     ->name('backend_post.destroy');
+        Route::delete('/{id}/delete',[BackendPostController::class,'destroy'])
+            ->name('backend_post.destroy');
     });
     //Comments
     Route::prefix('comment')->group(function(){

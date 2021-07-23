@@ -11,7 +11,7 @@
 <body>
 <div>
     <div class="navbar-menu relative z-50 float-left">
-        <nav class="fixed top-0 left-0 bottom-0 flex flex-col w-3/4 lg:w-80 sm:max-w-xs pt-6 pb-8 bg-gray-800 overflow-y-auto">
+        <nav class="fixed top-0 left-0 bottom-0 flex flex-col w-56 pt-6 pb-8 bg-gray-800 overflow-y-auto">
             <div class="flex w-full items-center px-6 pb-6 mb-6 lg:border-b border-gray-700">
                 <a class="text-xl text-white font-semibold" href="#">
                 <img class="h-8" src="artemis-assets/logos/artemis-logo.svg" alt="" width="auto">
@@ -20,7 +20,7 @@
             <div class="px-4 pb-6">
                 <h3 class="mb-2 text-xs uppercase text-gray-500 font-medium">Main</h3>
                 <ul class="mb-8 text-sm font-medium">
-                    <li>
+                    <div>
                         <a class="flex items-center pl-3 py-3 pr-4 text-gray-50 bg-indigo-500 rounded" href="#">
                             <span class="inline-block mr-3">
                                 <svg class="text-indigo-100 w-5 h-5" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -29,7 +29,7 @@
                             </span>
                             <span>Dashboard</span>
                         </a>
-                    </li>
+                    </div>
                     <li>
                         <a class="flex items-center pl-3 py-3 pr-2 text-gray-50 hover:bg-gray-900 rounded" href="{{route('backend_user.index')}}">
                             <span class="inline-block mr-3">
@@ -74,10 +74,12 @@
             </div>
         </nav>
     </div>
-    <div class="mx-auto lg:ml-80"></div>
+    <div class="mx-auto ml-56">
+        <div>
+            @yield('content')
+        </div>
+    </div>
 </div>
-<div>
-    @yield('content')
-</div>
+
 </body>
 </html>

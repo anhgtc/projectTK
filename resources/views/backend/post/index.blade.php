@@ -9,10 +9,9 @@
                     <thead>
                         <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
                             <th class="py-3 px-6 text-center">ID</th>
+                            <th class="py-3 px-6 text-center">CATEGORY</th>
                             <th class="py-3 px-6 text-center">NAME</th>
-                            <th class="py-3 px-6 text-center">EMAIL</th>
-                            <th class="py-3 px-6 text-center">USERNAME</th>
-                            <th class="py-3 px-6 text-center">PASSWORD</th>
+                            <th class="py-3 px-6 text-center">CONTENT</th>
                             <th class="py-3 px-6 text-center">ACTION</th>
                         </tr>
                     </thead>
@@ -25,12 +24,12 @@
                             </td>
                             <td class="py-3 px-6 text-center">
                                 <div class="flex items-center">
-                                    <span>Phan Thành Long</span>
+                                    <span>New</span>
                                 </div>
                             </td>
                             <td class="py-3 px-6 text-center">
                                 <div class="flex items-center">
-                                    <span>longgtc123@gmail.com</span>
+                                    <span>Si lun</span>
                                 </div>
                             </td>
                             <td class="py-3 px-6 text-center">
@@ -39,20 +38,15 @@
                                 </div>
                             </td>
                             <td class="py-3 px-6 text-center">
-                                <div class="flex items-center">
-                                    <span>anhVinh123</span>
-                                </div>
-                            </td>
-                            <td class="py-3 px-6 text-center">
                                 <div class="flex item-center justify-center">
-                                    <a href="{{route('backend_user.edit',1)}}">
+                                    <a href="{{route('backend_post.edit',1)}}">
                                         <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
                                             </svg>
                                         </div>
                                     </a>
-                                    <a href="{{route('backend_user.destroy',1)}}">
+                                    <a href="{{route('backend_post.destroy',1)}}">
                                         <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
@@ -68,7 +62,7 @@
         </div>
     </div>
 </div>
-<a href="{{route('backend_user.viewcreate')}}" class="fixed bottom-10 right-10">
-    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">New account</button>
+<a href="{{route('backend_post.viewcreate')}}" class="fixed bottom-10 right-10">
+    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">New post</button>
 </a>
 @endsection
