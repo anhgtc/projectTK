@@ -12,7 +12,9 @@ Route::group(['namespace'=>'Backend', 'prefix'=>'admin'], function(){
     //Home
     Route::get('',[BackendHomeController::class,'index'])->name('backend.home');
     //Admin Login
-    Route::get('/login',[BackendAdminController::class, 'login'])
+    Route::get('/viewlogin',[BackendAdminController::class, 'viewLogin'])
+        ->name('backend.adminviewlogin');
+    Route::post('/login',[BackendAdminController::class, 'login'])
         ->name('backend.adminlogin');
     //Admin Logout
     Route::get('/logout',[BackendAdminController::class, 'logout'])
@@ -28,9 +30,6 @@ Route::group(['namespace'=>'Backend', 'prefix'=>'admin'], function(){
             ->name('backend_category.viewcreate');
         Route::post('/create',[BackendCategoryController::class,'store'])
             ->name('backend_category.create');
-        //View detail
-        // Route::get('/{id}',[BackendCategoryController::class,'show'])
-        //     ->name('backend_category.show');
         //Edit
         // Route::get('/{id}/edit',[BackendCategoryController::class,'edit'])
         //     ->name('backend_category.edit');
@@ -50,9 +49,6 @@ Route::group(['namespace'=>'Backend', 'prefix'=>'admin'], function(){
             ->name('backend_user.viewcreate');
         Route::post('/create',[BackendUserController::class,'store'])
             ->name('backend_user.create');
-        //View user's detail
-        Route::get('/{id}',[BackendUserController::class,'show'])
-            ->name('backend_user.show');
         //Edit user's detail
         Route::get('/{id}/edit',[BackendUserController::class,'edit'])
             ->name('backend_user.edit');
@@ -72,9 +68,6 @@ Route::group(['namespace'=>'Backend', 'prefix'=>'admin'], function(){
             ->name('backend_post.viewcreate');
         Route::post('/create',[BackendCategoryController::class,'store'])
             ->name('backend_post.create');
-        //View post's detail
-        Route::get('/{id}',[BackendPostController::class,'show'])
-            ->name('backend_post.show');
         //Edit post
         Route::get('/{id}/edit',[BackendPostController::class,'edit'])
             ->name('backend_post.edit');
