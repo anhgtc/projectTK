@@ -31,13 +31,13 @@ Route::group(['namespace'=>'Backend', 'prefix'=>'admin'], function(){
         Route::post('/create',[BackendCategoryController::class,'store'])
             ->name('backend_category.create');
         //Edit
-        // Route::get('/{id}/edit',[BackendCategoryController::class,'edit'])
-        //     ->name('backend_category.edit');
-        // Route::post('/{id}',[BackendCategoryController::class, 'update'])
-        //     ->name('backend_category.update');
+        Route::get('/{id}/edit',[BackendCategoryController::class,'edit'])
+            ->name('backend_category.edit');
+        Route::post('/{id}',[BackendCategoryController::class, 'update'])
+            ->name('backend_category.update');
         //Delete
-        // Route::delete('/{id}/delete',[BackendCategoryController::class,'destroy'])
-        //     ->name('backend_category.destroy');
+        Route::get('/{id}/delete',[BackendCategoryController::class,'destroy'])
+            ->name('backend_category.destroy');
     });
     //Users
     Route::prefix('user')->group(function(){
@@ -52,7 +52,7 @@ Route::group(['namespace'=>'Backend', 'prefix'=>'admin'], function(){
         //Edit user's detail
         Route::get('/{id}/edit',[BackendUserController::class,'edit'])
             ->name('backend_user.edit');
-        Route::get('/{id}',[BackendUserController::class, 'update'])
+        Route::post('/{id}',[BackendUserController::class, 'update'])
             ->name('backend_user.update');
         //Delete user
         Route::get('/{id}/delete',[BackendUserController::class,'destroy'])
@@ -66,34 +66,24 @@ Route::group(['namespace'=>'Backend', 'prefix'=>'admin'], function(){
         //Create post
         Route::get('/viewcreate',[BackendPostController::class,'create'])
             ->name('backend_post.viewcreate');
-        Route::post('/create',[BackendCategoryController::class,'store'])
+        Route::post('/create',[BackendPostController::class,'store'])
             ->name('backend_post.create');
         //Edit post
         Route::get('/{id}/edit',[BackendPostController::class,'edit'])
             ->name('backend_post.edit');
-        Route::put('/{id}',[BackendPostController::class, 'update'])
+        Route::post('/{id}',[BackendPostController::class, 'update'])
             ->name('backend_post.update');
         //Delete post
-        Route::delete('/{id}/delete',[BackendPostController::class,'destroy'])
+        Route::get('/{id}/delete',[BackendPostController::class,'destroy'])
             ->name('backend_post.destroy');
     });
     //Comments
     Route::prefix('comment')->group(function(){
-        //Create new comment
-        Route::get('/create',[BackendCommentController::class,'create'])
-            ->name('backend_comment.create');
-        Route::get('/store',[BackendCommentController::class,'store'])
-            ->name('backend_comment.store');
         //View comment
-        // Route::get('/{id}',[BackendCommentController::class,'show'])
-        //     ->name('backend_comment.show');
-        //Edit comment
-        // Route::get('/{id}/edit',[BackendCommentController::class,'edit'])
-        //     ->name('backend_comment.edit');
-        // Route::put('/{id}',[BackendCommentController::class, 'update'])
-        //     ->name('backend_comment.update');
+        Route::get('/{id}',[BackendCommentController::class,'index'])
+            ->name('backend_comment.index');
         //Delete comment
-        // Route::delete('/{id}/delete',[BackendCommentController::class,'destroy'])
-        //     ->name('backend_comment.destroy');
+        Route::get('/{id}/delete',[BackendCommentController::class,'destroy'])
+            ->name('backend_comment.destroy');
     });
 });

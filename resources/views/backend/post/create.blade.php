@@ -4,14 +4,14 @@
     <!-- User detail-->
     <div class="bg-white p-16 rounded shadow-2xl w-2/3">
         <h2 class="text-3xl font-bold mb-10 text-gray-800">Create new account</h2>
-        <form class="space-y-5" method="post" action="{{route('backend_user.create')}}">
+        <form class="space-y-5" method="post" action="{{route('backend_post.create')}}">
             @csrf
             <div>
                 <label class="block mb-1 font-bold text-gray-500">Category</label>
                 <select name="category" id="category">
-                    <option value="technology">Technology</option>
-                    <option value="new">New</option>
-                    <option value="sport">Sport</option>
+                    @foreach ($categories as $category)
+                    <option value="{{$category->name}}">{{$category->name}}</option>
+                    @endforeach
                 </select>
             </div>
             <div>

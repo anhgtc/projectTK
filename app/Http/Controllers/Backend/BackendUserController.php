@@ -16,10 +16,12 @@ class BackendUserController extends Controller
 
         return view("backend.user.index", compact('users'));
     }
+
     public function create()
     {
         return view('backend.user.create');
     }
+
     public function store(Request $request)
     {
         $users = new User;
@@ -31,8 +33,25 @@ class BackendUserController extends Controller
         $users->save();
         return redirect()->action([BackendUserController::class, 'create']);
     }
-    public function edit()
+
+    public function edit($id)
     {
-        return view('backend.user.edit');
+        $user = DB::table('users')->where('id','=',$id)->get();
+        return view('backend.user.edit',compact('user'));
+    }
+
+    public function update($id, Request $request)
+    {
+        $user = new User;
+        $user->name = $request->name;
+        $user->password = $request->password;
+        DB::table('users')->where('id','=',$id)->update(['name'=>$user->name,'password'=>$user->password]);
+        return redirect()->action([BackendUserController::class, 'index']);
+    }
+
+    public function destroy($id)
+    {
+        DB::table('users')->where('id', '=', $id)->delete();
+        return redirect()->action([BackendUserController::class, 'index']);
     }
 }
