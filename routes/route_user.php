@@ -32,12 +32,16 @@ Route::group(['namespace'=>'Frontend'], function(){
         //Login
         Route::get('/login',[UserController::class,'login'])
             ->name('user.login');
+        Route::post('/cflogin',[UserController::class,'confirmLogin'])
+            ->name('user.cflogin');
         //Logout
-        Route::get('/{id}/logout',[UserController::class,'logout'])
+        Route::get('/logout',[UserController::class,'logout'])
             ->name('user.logout');
-        //Edit
-        Route::get('/{id}/edit',[UserController::class,'edit'])
-            ->name('user.edit');
+        //Register
+        Route::get('/register',[UserController::class,'register'])
+            ->name('user.register');
+        Route::post('/cfregister',[UserController::class,'confirmRegister'])
+            ->name('user.cfregister');
     });
     //Comment
 

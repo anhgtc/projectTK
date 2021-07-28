@@ -66,7 +66,7 @@
         </div>
     </div>
 </div>
-<a href="{{route('backend_post.index')}}" class="fixed bottom-10 right-10">
+<a href="{{route('backend_post.viewcreate')}}" class="fixed bottom-10 right-10">
     <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">New post</button>
 </a>
 @endsection
