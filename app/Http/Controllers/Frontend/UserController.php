@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -17,17 +18,22 @@ class UserController extends Controller
     {
         $username = $request->username;
         $password = $request->password;
-        $users = DB::table('users')->select('*')->get();
+        $users = User::all();
         foreach ($users as $user) {
             if ($user->username == $username && $user->password == $password)
-                return view ('frontend.home.index');
+            {
+                Auth::login($user);
+                return redirect()->route('get.home');
+            }
         }
-        return view ('frontend.user.login');
+        return view('frontend.user.login');
     }
     public function logout()
     {
-
+        Auth::logout();
+        return redirect()->route('get.home');
     }
+
     public function register()
     {
         return view('frontend.user.register');

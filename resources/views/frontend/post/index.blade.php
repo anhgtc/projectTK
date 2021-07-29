@@ -11,13 +11,13 @@
                         @foreach ($posts as $post)
                         <div class="max-w-4xl px-10 py-6 mx-auto bg-white rounded-lg shadow-md">
                             <div class="mt-2">
-                                <a href="#" class="text-2xl font-bold text-gray-700 hover:underline">{{$post->name}}</a>
+                                <a href="{{route('post.show',$post->id)}}" class="text-2xl font-bold text-gray-700 hover:underline">{{$post->name}}</a>
                                 <p class="mt-2 text-gray-600">
                                     {{$post->content}}
                                 </p>
                             </div>
                             <div class="flex items-center justify-between mt-4">
-                                <a href="#" class="text-blue-500 hover:underline">Read more</a>
+                                <a href="{{route('post.show',$post->id)}}" class="text-blue-500 hover:underline">Read more</a>
                             </div>
                         </div>
                         <br>
@@ -26,13 +26,10 @@
                     {{$posts->links()}}
                 </div>
                 <div class="hidden w-4/12 -mx-8 lg:block">
-                    <div class="px-8 mt-10">
+                    <div class="px-8 mt-6">
                         <h1 class="mb-4 text-xl font-bold text-gray-700">Categories</h1>
-                        <div class="flex flex-col max-w-sm px-4 py-6 mx-auto bg-white rounded-lg shadow-md">
+                        <div class="max-w-sm px-4 py-6 mx-auto bg-white rounded-lg shadow-md h-64 overscroll-y-auto overflow-auto">
                             <ul>
-                                <li><a href="" class="mx-1 font-bold text-gray-700 hover:text-gray-600 hover:underline">
-                                    All</a>
-                                </li>
                                 @foreach ($categories as $category)
                                 <li class="mt-2">
                                     <a href="#" class="mx-1 font-bold text-gray-700 hover:text-gray-600 hover:underline">{{$category->name}}</a>
@@ -43,7 +40,6 @@
                             </ul>
                         </div>
                     </div>
-                    {{$categories->links()}}
                 </div>
             </div>
         </div>

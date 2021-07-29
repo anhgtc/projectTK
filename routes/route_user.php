@@ -24,7 +24,7 @@ Route::group(['namespace'=>'Frontend'], function(){
         Route::get('',[PostController::class,'index'])
             ->name('post.index');
         //View post's detail
-        Route::get('/{id}',[CategoryController::class,'show'])
+        Route::get('/{id}',[PostController::class,'show'])
             ->name('post.show');
     });
     //User
