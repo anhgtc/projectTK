@@ -51,6 +51,7 @@ class UserController extends Controller
         $user->email = $request->email;
         $user->username = $request->username;
         $user->password = $request->password;
+        $user->id_role = '1';
 
         $user->save();
         return view('frontend.user.login');

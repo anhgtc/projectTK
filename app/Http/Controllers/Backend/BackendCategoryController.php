@@ -24,9 +24,15 @@ class BackendCategoryController extends Controller
 
     public function store(Request $request)
     {
-        $categories = new category;
-        $categories->name = $request->name;
-        $categories->save();
+        $categories = DB::table('categories')->select('*')->get();
+        foreach ($categories as $row)
+        {
+            if ($row->name == $request->name) return redirect()->action([BackendCategoryController::class, 'create']);
+        }
+
+        $category = new Category;
+        $category->name = $request->name;
+        $category->save();
         return redirect()->action([BackendCategoryController::class, 'create']);
     }
 

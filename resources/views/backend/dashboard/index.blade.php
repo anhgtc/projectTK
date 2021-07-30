@@ -1,4 +1,4 @@
 @extends('layouts.app_backend')
 @section('content')
-    <div>Here is home admin.</div>
+    <div>Đăng nhập để thao tác với blog</div>
 @endsection

@@ -19,6 +19,11 @@ Route::group(['namespace'=>'Backend', 'prefix'=>'admin'], function(){
     //Admin Logout
     Route::get('/logout',[BackendAdminController::class, 'logout'])
         ->name('backend.adminlogout');
+    //Admin Register
+    Route::get('/register',[BackendAdminController::class,'register'])
+        ->name('backend.adminregister');
+    Route::post('/store',[BackendAdminController::class,'store'])
+        ->name('backend.adminstore');
 
     //Categories
     Route::prefix('category')->group(function(){

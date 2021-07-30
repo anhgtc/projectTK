@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Frontend\CategoryController;
+use App\Http\Controllers\Frontend\CommentController;
 use App\Http\Controllers\Frontend\PostController;
 use App\Http\Controllers\Frontend\UserController;
 use App\Http\Controllers\Frontend\HomeController;
@@ -26,6 +27,9 @@ Route::group(['namespace'=>'Frontend'], function(){
         //View post's detail
         Route::get('/{id}',[PostController::class,'show'])
             ->name('post.show');
+        //Show posts by category
+        Route::get('/category/{name}',[PostController::class,'byCategory'])
+            ->name('post.category');
     });
     //User
     Route::prefix('user')->group(function(){
@@ -44,5 +48,9 @@ Route::group(['namespace'=>'Frontend'], function(){
             ->name('user.cfregister');
     });
     //Comment
+    Route::prefix('comment')->group(function(){
+        Route::post('/{id}',[CommentController::class,'store'])
+            ->name('comment.store');
+    });
 
 });

@@ -32,7 +32,7 @@
                             <ul>
                                 @foreach ($categories as $category)
                                 <li class="mt-2">
-                                    <a href="#" class="mx-1 font-bold text-gray-700 hover:text-gray-600 hover:underline">{{$category->name}}</a>
+                                    <a href="{{route('post.category',$category->name)}}" class="mx-1 font-bold text-gray-700 hover:text-gray-600 hover:underline">{{$category->name}}</a>
                                 </li>
 
                                 @endforeach

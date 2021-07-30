@@ -1,6 +1,7 @@
 @extends('layouts.app_backend')
 @section('content')
 <!-- component -->
+@auth
 <div class="overflow-x-auto">
     <div class="min-w-screen min-h-screen bg-gray-100 flex items-center justify-center bg-gray-100 font-sans overflow-hidden">
         <div class="w-full lg:w-5/6">
@@ -57,4 +58,6 @@
 <a href="{{route('backend_category.viewcreate')}}" class="fixed bottom-10 right-10">
     <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">New category</button>
 </a>
+@endauth
+
 @endsection

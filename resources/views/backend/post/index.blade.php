@@ -1,6 +1,7 @@
 @extends('layouts.app_backend')
 @section('content')
 <!-- component -->
+@auth
 <div class="overflow-x-auto">
     <div class="min-w-screen min-h-screen bg-gray-100 flex items-center justify-center bg-gray-100 font-sans overflow-hidden">
         <div class="w-full lg:w-5/6">
@@ -11,13 +12,12 @@
                             <th class="py-3 px-6 text-center">ID</th>
                             <th class="py-3 px-6 text-center">CATEGORY</th>
                             <th class="py-3 px-6 text-center">NAME</th>
-                            <th class="py-3 px-6 text-center">CONTENT</th>
                             <th class="py-3 px-6 text-center">ACTION</th>
                         </tr>
                     </thead>
                     <tbody class="text-gray-600 text-sm font-light">
                     @foreach ($posts as $post)
-                        <tr class="border-b border-gray-200 hover:bg-gray-100">
+                        <tr class="border-b border-gray-200 hover:bg-gray-100 text-sm leading-normal">
                             <td class="py-3 px-6 text-center">
                                 <div class="flex items-center">
                                     <span class="font-medium">{{$post->id}}</span>
@@ -31,11 +31,6 @@
                             <td class="py-3 px-6 text-center">
                                 <div class="flex items-center">
                                     <span>{{$post->name}}</span>
-                                </div>
-                            </td>
-                            <td class="py-3 px-6 text-center">
-                                <div class="flex items-center">
-                                    <span>{{$post->content}}</span>
                                 </div>
                             </td>
                             <td class="py-3 px-6 text-center">
@@ -69,4 +64,5 @@
 <a href="{{route('backend_post.viewcreate')}}" class="fixed bottom-10 right-10">
     <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">New post</button>
 </a>
+@endauth
 @endsection

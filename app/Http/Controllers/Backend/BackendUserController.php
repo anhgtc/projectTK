@@ -11,8 +11,7 @@ class BackendUserController extends Controller
 {
     public function index()
     {
-        $users = DB::table('users')->select('*');
-        $users = $users->paginate(2);
+        $users = DB::table('users')->where('id_role','=','1')->paginate(2);
 
         return view("backend.user.index", compact('users'));
     }
@@ -29,6 +28,7 @@ class BackendUserController extends Controller
         $users->email = $request->email;
         $users->username = $request->username;
         $users->password = $request->password;
+        $users->id_role = '1';
 
         $users->save();
         return redirect()->action([BackendUserController::class, 'create']);
@@ -51,6 +51,7 @@ class BackendUserController extends Controller
 
     public function destroy($id)
     {
+        DB::table('comments')->where('id_user','=',$id)->delete();
         DB::table('users')->where('id', '=', $id)->delete();
         return redirect()->action([BackendUserController::class, 'index']);
     }

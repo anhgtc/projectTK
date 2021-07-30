@@ -16,7 +16,9 @@ class BackendCommentController extends Controller
     }
     public function destroy($id)
     {
+        $comment = DB::table('comments')->where('id', '=', $id)->first();
+        $id_post = $comment->id_post;
         DB::table('comments')->where('id', '=', $id)->delete();
-        return redirect()->action([BackendCommentController::class, 'index']);
+        return redirect()->route('backend_comment.index',$id_post);
     }
 }

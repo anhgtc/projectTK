@@ -52,6 +52,7 @@ class BackendPostController extends Controller
 
     public function destroy($id)
     {
+        DB::table('comments')->where('id_post','=',$id)->delete();
         DB::table('posts')->where('id', '=', $id)->delete();
         return redirect()->action([BackendPostController::class, 'index']);
     }
