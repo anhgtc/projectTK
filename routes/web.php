@@ -13,10 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::get('/{slug?}', function () {
     return view('welcome');
-});
-
-include 'route_user.php';
-include 'route_admin.php';
+})->where('slug', '^.*$');
 
