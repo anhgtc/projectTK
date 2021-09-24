@@ -9,6 +9,7 @@ import PostsDetail from '../views/frontend/post/PostsDetail.vue'
 
 //admin
 import Backend from '../views/layouts/Backend.vue'
+import BackendHome from '../views/backend/home/BackendHome.vue'
 import BackendCategoriesCreate from '../views/backend/category/BackendCategoriesCreate.vue'
 import BackendCategoriesEdit from '../views/backend/category/BackendCategoriesEdit.vue'
 import BackendCategoriesIndex from '../views/backend/category/BackendCategoriesIndex.vue'
@@ -20,13 +21,26 @@ import BackendUsersIndex from '../views/backend/user/BackendUsersIndex.vue'
 import BackendUsersEdit from '../views/backend/user/BackendUsersEdit.vue'
 import BackendUsersCreate from '../views/backend/user/BackendUsersCreate.vue'
 import BackendDashboard from '../views/backend/dashboard/BackendDashboard.vue'
-import { component } from 'vue/types/umd'
+import BackendAdminRegister from '../views/backend/admin/BackendAdminRegister.vue'
+
 Vue.use(VueRouter)
 
-const routes = [{
-        path: 'admin',
+const routes = [
+    {
+        path: '/admin/Register',
+        name: 'BackendAdminRegister',
+        component: BackendAdminRegister
+    },
+    {
+        path: '/admin',
         component: Backend,
-        children: [{
+        children: [
+            {
+                path: '',
+                name: 'BackendHome',
+                component: BackendHome
+            },
+            {
                 path: 'Dashboard',
                 name: 'BackendDashboard',
                 component: BackendDashboard
@@ -75,6 +89,11 @@ const routes = [{
                 path: 'Users/Create',
                 name: 'BackendUsersCreate',
                 component: BackendUsersCreate
+            },
+            {
+                path: 'Comments',
+                name: 'BackendCommentsIndex',
+                component: BackendCommentsIndex
             }
         ]
     }
