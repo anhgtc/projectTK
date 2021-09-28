@@ -13,7 +13,29 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/{slug?}', function () {
+Route::get('/', function () {
+    return view('welcome');
+});
+Route::get('/admin/{slug?}', function () {
+    return view('welcome');
+})->where('slug', '^.*$');
+Route::get('/web/{slug?}', function () {
+    return view('welcome');
+})->where('slug', '^.*$');
+Route::get('/user/{slug?}', function () {
+    return view('welcome');
+})->where('slug', '^.*$');
+Route::get('/Posts/{slug?}', function () {
     return view('welcome');
 })->where('slug', '^.*$');
 
+
+//Backend
+require __DIR__ . '/backend.php';
+
+//Frontend
+require __DIR__ . '/frontend.php';
+
+// Route::get('/{slug?}', function () {
+//     return view('welcome');
+// })->where('slug', '^.*$');

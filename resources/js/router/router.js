@@ -1,12 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-//user
-import Frontend from '../views/layouts/Frontend.vue'
-import HomeIndex from '../views/frontend/home/HomeIndex.vue'
-import PostsIndex from '../views/frontend/post/PostsIndex.vue'
-import PostsDetail from '../views/frontend/post/PostsDetail.vue'
-
 //admin
 import Backend from '../views/layouts/Backend.vue'
 import BackendHome from '../views/backend/home/BackendHome.vue'
@@ -23,6 +17,12 @@ import BackendUsersCreate from '../views/backend/user/BackendUsersCreate.vue'
 import BackendDashboard from '../views/backend/dashboard/BackendDashboard.vue'
 import BackendAdminRegister from '../views/backend/admin/BackendAdminRegister.vue'
 
+//user
+import Frontend from '../views/layouts/Frontend.vue'
+import HomeIndex from '../views/frontend/home/HomeIndex.vue'
+import PostsIndex from '../views/frontend/post/PostsIndex.vue'
+import PostsDetail from '../views/frontend/post/PostsDetail.vue'
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -31,6 +31,11 @@ const routes = [
         name: 'BackendAdminRegister',
         component: BackendAdminRegister
     },
+    // {
+    //     path: '/admin/Login',
+    //     name: 'BackendAdminLogin',
+    //     component: BackendAdminLogin
+    // },
     {
         path: '/admin',
         component: Backend,
@@ -56,8 +61,8 @@ const routes = [
                 component: BackendPostsEdit
             },
             {
-                path: 'Posts/Create',
-                name: 'BackendPostsCreate',
+                path: 'Posts/ViewCreate',
+                name: 'BackendPostsViewCreate',
                 component: BackendPostsCreate
             },
             {
@@ -95,6 +100,37 @@ const routes = [
                 name: 'BackendCommentsIndex',
                 component: BackendCommentsIndex
             }
+        ]
+    },
+    // {
+    //     path: '/user/Register',
+    //     name: 'UserRegister',
+    //     component: UserRegister
+    // },
+    // {
+    //     path: '/user/Login',
+    //     name: 'UserLogin',
+    //     component: UserLogin
+    // },
+    {
+        path: '',
+        component: Frontend,
+        children: [
+            {
+                path: '',
+                name: 'HomePage',
+                component: HomeIndex
+            },
+            {
+                path: '/Posts',
+                name: 'PostsIndex',
+                component: PostsIndex
+            },
+            {
+                path: '/Posts/:id',
+                name: 'PostsDetail',
+                component: PostsDetail
+            },
         ]
     }
 

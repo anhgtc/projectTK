@@ -61,7 +61,7 @@
                             </router-link>
                         </li>
                     </ul>
-                    <div class="pt-8">
+                    <!-- <div class="pt-8">
                         <router-link class="flex items-center pl-3 py-3 pr-2 text-gray-50 hover:bg-gray-900 rounded" :to="{name: 'BackendAdminLogout'}">
                             <span class="inline-block mr-4">
                                 <svg class="text-gray-600 w-5 h-5" viewBox="0 0 14 18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -70,7 +70,7 @@
                             </span>
                             <span>Log Out</span>
                         </router-link>
-                    </div>
+                    </div> -->
                 </div>
             </nav>
         </div>
@@ -79,7 +79,7 @@
                 <a class="text-3xl font-bold leading-none">
                     <img class="h-12" src="https://www.sapo.vn/blog/wp-content/uploads/2015/07/gi%E1%BB%AF-ch%C3%A2n-kh%C3%A1ch-h%C3%A0ng-1.jpg" alt="" width="auto">
                 </a>
-                <router-link class="lg:inline-block lg:ml-auto lg:mr-3 py-2 px-6 bg-gray-50 hover:bg-gray-100 text-sm text-gray-900 font-bold rounded-l-xl rounded-t-xl transition duration-200" :to="{name:'BackendAminRegister'}">Sign In</router-link>
+                <!-- <router-link class="lg:inline-block lg:ml-auto lg:mr-3 py-2 px-6 bg-gray-50 hover:bg-gray-100 text-sm text-gray-900 font-bold rounded-l-xl rounded-t-xl transition duration-200" :to="{name:'BackendAminRegister'}">Sign In</router-link> -->
                 <a class="lg:inline-block py-2 px-6 bg-green-500 hover:bg-green-600 text-sm text-white font-bold rounded-l-xl rounded-t-xl transition duration-200">Sign up</a>
             </nav>
         </header>
