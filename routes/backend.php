@@ -10,7 +10,9 @@ use Illuminate\Support\Facades\Route;
 //Admin
 Route::get('/admin/login', [BackendAdminController::class, 'index']);
 Route::post('/admin/login', [BackendAdminController::class, 'login']);
-
+Route::get('/admin/Register', function () {
+    return view('welcome');
+});
 Route::prefix('api/admin')->group(function () {
     Route::post('/register', [BackendAdminController::class, 'register'])
         ->name('admin.register');

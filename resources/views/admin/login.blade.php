@@ -9,6 +9,13 @@
     <title>Backend</title>
 </head>
 <body>
+    @if (session('status'))
+    <div role="alert">
+        <div class="bg-red-500 text-white font-bold rounded-t px-4 py-2">
+          Đăng nhập thất bại
+        </div>
+    </div>
+    @endif
     <form method="POST" action="/admin/login">
         @csrf
         <div class="h-screen overflow-hidden flex items-center justify-center" style="background: #edf2f7;">
@@ -26,7 +33,6 @@
                 Password
               </label>
               <input class="shadow appearance-none border border-red rounded w-full py-2 px-3 text-grey-darker mb-3" name="password"id="password" type="password" placeholder="******************">
-              <p class="text-red text-xs italic">Please choose a password.</p>
             </div>
               <input class="bg-blue hover:bg-blue-dark text-black font-bold py-2 px-4 rounded" type="submit" value="Đăng nhập"/>
         </div>

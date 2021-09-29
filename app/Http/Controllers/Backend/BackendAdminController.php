@@ -31,7 +31,7 @@ class BackendAdminController extends Controller
         $users->name = $request->name;
         $users->email = $request->email;
         $users->username = $request->username;
-        $users->password = $request->password;
+        $users->password = Hash::make($request->password);
         $users->id_role = '0';
 
         $users->save();
@@ -45,12 +45,12 @@ class BackendAdminController extends Controller
 
     public function login(Request $request)
     {
-        $admin = DB::table('users')->where('username', '=', $request->username)->first();
-        if ($admin->password == $request->password && $admin->id_role == '0') {
+        if (Auth::attempt(['username' => $request->username, 'password' => $request->password])) {
             $user = User::where('username', '=', $request->username)->first();
             Auth::login($user);
             return redirect('/admin');
         }
+        $request->session()->flash('status', 'Đăng nhập thất bại!');
         return redirect('/admin/login');
     }
 

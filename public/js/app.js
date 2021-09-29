@@ -3248,10 +3248,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
@@ -25165,17 +25161,6 @@ var render = function() {
             "ml-56 relative px-6 py-6 flex justify-between items-center bg-white"
         },
         [
-          _vm._m(1),
-          _vm._v(" "),
-          _c(
-            "a",
-            {
-              staticClass:
-                "lg:inline-block lg:ml-auto lg:mr-3 py-2 px-6 bg-gray-50 hover:bg-gray-100 text-sm text-gray-900 font-bold rounded-l-xl rounded-t-xl transition duration-200"
-            },
-            [_vm._v("Sign In")]
-          ),
-          _vm._v(" "),
           _c(
             "router-link",
             {
@@ -25219,22 +25204,6 @@ var staticRenderFns = [
         ])
       ]
     )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("a", { staticClass: "text-3xl font-bold leading-none" }, [
-      _c("img", {
-        staticClass: "h-12",
-        attrs: {
-          src:
-            "https://www.sapo.vn/blog/wp-content/uploads/2015/07/gi%E1%BB%AF-ch%C3%A2n-kh%C3%A1ch-h%C3%A0ng-1.jpg",
-          alt: "",
-          width: "auto"
-        }
-      })
-    ])
   }
 ]
 render._withStripped = true

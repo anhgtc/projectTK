@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class BackendUserController extends Controller
 {
@@ -31,7 +32,7 @@ class BackendUserController extends Controller
     {
         $user = new User;
         $user->name = $request->name;
-        $user->password = $request->password;
+        $user->password = Hash::make($request->password);
         DB::table('users')->where('id', '=', $id)->update(['name' => $user->name, 'password' => $user->password]);
         return 'done';
     }
@@ -56,7 +57,7 @@ class BackendUserController extends Controller
         $users->name = $request->name;
         $users->email = $request->email;
         $users->username = $request->username;
-        $users->password = $request->password;
+        $users->password = Hash::make($request->password);
         $users->id_role = '1';
 
         $users->save();
