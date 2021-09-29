@@ -22,7 +22,7 @@ import Frontend from '../views/layouts/Frontend.vue'
 import HomeIndex from '../views/frontend/home/HomeIndex.vue'
 import PostsIndex from '../views/frontend/post/PostsIndex.vue'
 import PostsDetail from '../views/frontend/post/PostsDetail.vue'
-
+import UserRegister from '../views/frontend/user/UserRegister.vue'
 Vue.use(VueRouter)
 
 const routes = [
@@ -102,11 +102,11 @@ const routes = [
             }
         ]
     },
-    // {
-    //     path: '/user/Register',
-    //     name: 'UserRegister',
-    //     component: UserRegister
-    // },
+    {
+        path: '/user/Register',
+        name: 'UserRegister',
+        component: UserRegister
+    },
     // {
     //     path: '/user/Login',
     //     name: 'UserLogin',

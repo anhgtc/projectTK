@@ -1,13 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\Frontend;
+namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
-class UserController extends Controller
+class BackendAdminController extends Controller
 {
     public function register(Request $request)
     {
@@ -30,13 +32,38 @@ class UserController extends Controller
         $users->email = $request->email;
         $users->username = $request->username;
         $users->password = $request->password;
-        $users->id_role = '1';
+        $users->id_role = '0';
 
         $users->save();
         return 'done';
     }
 
+    public function index()
+    {
+        return view('admin.login');
+    }
+
     public function login(Request $request)
     {
+        $admin = DB::table('users')->where('username', '=', $request->username)->first();
+        if ($admin->password == $request->password && $admin->id_role == '0') {
+            $user = User::where('username', '=', $request->username)->first();
+            Auth::login($user);
+            return redirect('/admin');
+        }
+        return redirect('/admin/login');
+    }
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return response()->json([
+            'message' => 'Logout succcess',
+        ], 200);
     }
 }

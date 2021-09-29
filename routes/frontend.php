@@ -2,11 +2,14 @@
 
 use App\Http\Controllers\Frontend\PostController;
 use App\Http\Controllers\Frontend\CommentController;
-use App\Http\Controllers\Frontend\UseController;
+use App\Http\Controllers\Frontend\UserController;
 use Illuminate\Support\Facades\Route;
 
 //User
-
+Route::prefix('api/web/users')->group(function () {
+    Route::post('/register', [UserController::class, 'register'])
+        ->name('webusers.register');
+});
 //Post
 Route::prefix('api/web/posts')->group(function () {
     Route::get('/', [PostController::class, 'index'])

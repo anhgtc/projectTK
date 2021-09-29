@@ -3,11 +3,11 @@
         <div class="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
             <div class="bg-white px-6 py-8 rounded shadow-md text-black w-full">
                 <h1 class="mb-8 text-3xl text-center">Sign up</h1>
-                <form @submit.prevent="createAdmin">
-                    <input type="text" class="block border border-grey-light w-full p-3 rounded mb-4" name="name" placeholder="Name" v-model="name" />
-                    <input type="email" class="block border border-grey-light w-full p-3 rounded mb-4" name="email" placeholder="Email" v-model="email" />
-                    <input type="text" class="block border border-grey-light w-full p-3 rounded mb-4" name="username" placeholder="Username" v-model="username" />
-                    <input type="password" class="block border border-grey-light w-full p-3 rounded mb-4" name="password" placeholder="Password" v-model="password" />
+                <form @submit.prevent="createUser">
+                    <input type="text" class="block border border-grey-light w-full p-3 rounded mb-4" v-model="name" placeholder="Name" />
+                    <input type="email" class="block border border-grey-light w-full p-3 rounded mb-4" v-model="email" placeholder="Email" />
+                    <input type="text" class="block border border-grey-light w-full p-3 rounded mb-4" v-model="username" placeholder="Username" />
+                    <input type="password" class="block border border-grey-light w-full p-3 rounded mb-4" v-model="password" placeholder="Password" />
                     <button type="submit" class="w-full text-center py-3 rounded bg-green-400 text-white hover:bg-green-dark focus:outline-none my-1">Create Account</button>
                 </form>
             </div>
@@ -19,7 +19,6 @@
             </div>
         </div>
     </div>
-
 </template>
 <script>
 import axios from "axios";
@@ -32,10 +31,9 @@ export default {
             password: "",
         };
     },
-
     methods: {
-        createAdmin() {
-            let url = "/api/admin/register"
+        createUser() {
+            let url = "/api/web/users/register";
             let json = {
                 name: this.name,
                 email: this.email,
@@ -43,13 +41,18 @@ export default {
                 password: this.password,
             };
             axios
-                .post(url, json, {})
+                .post(url, json)
                 .then((result) => {
                     console.log(result.data);
                     alert("Dang ki thanh cong");
+                    this.name = "";
+                    this.email = "";
+                    this.username = "";
+                    this.password = "";
                 })
                 .catch((error) => {
-                    alert("Dang ki khong thanh cong");
+                    console.log(error);
+                    alert("Khong thanh cong");
                     throw new Error(`API ${error}`);
                 });
         },
