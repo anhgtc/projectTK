@@ -6,6 +6,8 @@ use App\Http\Controllers\Frontend\UserController;
 use Illuminate\Support\Facades\Route;
 
 //User
+Route::get('/login', [UserController::class, 'index']);
+Route::post('/login', [UserController::class, 'login']);
 Route::prefix('api/web/users')->group(function () {
     Route::post('/register', [UserController::class, 'register'])
         ->name('webusers.register');

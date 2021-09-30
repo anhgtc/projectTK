@@ -11,7 +11,7 @@ class BackendCategoryController extends Controller
 {
     public function index()
     {
-        $categories = DB::table('categories')->select('*')->get();
+        $categories = Category::select('*')->get();
         $data = [
             'categories' => $categories
         ];
@@ -20,13 +20,13 @@ class BackendCategoryController extends Controller
 
     public function delete($id)
     {
-        DB::table('categories')->where('id', '=', $id)->delete();
+        Category::where('id', '=', $id)->delete();
         return 'done';
     }
 
     public function show($id)
     {
-        $category = DB::table('categories')->where('id', '=', $id)->first();
+        $category = Category::where('id', '=', $id)->first();
         $data = [
             'category' => $category
         ];
@@ -37,13 +37,13 @@ class BackendCategoryController extends Controller
     {
         $category = new Category;
         $category->name = $request->name;
-        DB::table('categories')->where('id', '=', $id)->update(['name' => $category->name]);
+        Category::where('id', '=', $id)->update(['name' => $category->name]);
         return 'done';
     }
 
     public function create(Request $request)
     {
-        $category = DB::table('categories')->where('name', '=', $request->name)->first();
+        $category = Category::where('name', '=', $request->name)->first();
         if (!empty($category)) return response()->json([
             'errors' => [
                 'Name' => ['Ten da ton tai']

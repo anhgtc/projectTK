@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use Illuminate\Support\Facades\DB;
@@ -11,7 +12,7 @@ class BackendPostController extends Controller
 {
     public function index()
     {
-        $posts = DB::table('posts')->select('*')->get();
+        $posts = Post::select('*')->get();
         $data = [
             'posts' => $posts
         ];
@@ -20,7 +21,7 @@ class BackendPostController extends Controller
 
     public function show($id)
     {
-        $post = DB::table('posts')->where('id', '=', $id)->first();
+        $post = Post::where('id', '=', $id)->first();
         $data = [
             'post' => $post
         ];
@@ -32,13 +33,13 @@ class BackendPostController extends Controller
         $post = new Post;
         $post->name = $request->name;
         $post->content = $request->content;
-        DB::table('posts')->where('id', '=', $id)->update(['name' => $post->name, 'content' => $post->content]);
+        Post::where('id', '=', $id)->update(['name' => $post->name, 'content' => $post->content]);
         return 'done';
     }
 
     public function viewCreate()
     {
-        $categories = DB::table('categories')->select('*')->get();
+        $categories = Category::select('*')->get();
         $data = [
             'categories' => $categories
         ];

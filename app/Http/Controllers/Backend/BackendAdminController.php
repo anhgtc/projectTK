@@ -13,14 +13,14 @@ class BackendAdminController extends Controller
 {
     public function register(Request $request)
     {
-        $user = DB::table('users')->where('email', '=', $request->email)->first();
+        $user = User::where('email', '=', $request->email)->first();
         if (!empty($user)) return response()->json([
             'errors' => [
                 'email' => ['Email da ton tai']
             ],
             'message' => 'The given data was invalid.'
         ], 422);
-        $user = DB::table('users')->where('username', '=', $request->username)->first();
+        $user = User::where('username', '=', $request->username)->first();
         if (!empty($user)) return response()->json([
             'errors' => [
                 'usrename' => ['Username da ton tai']

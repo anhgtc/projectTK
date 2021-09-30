@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
@@ -12,14 +13,14 @@ class UserController extends Controller
 {
     public function register(Request $request)
     {
-        $user = DB::table('users')->where('email', '=', $request->email)->first();
+        $user = User::where('email', '=', $request->email)->first();
         if (!empty($user)) return response()->json([
             'errors' => [
                 'email' => ['Email da ton tai']
             ],
             'message' => 'The given data was invalid.'
         ], 422);
-        $user = DB::table('users')->where('username', '=', $request->username)->first();
+        $user = User::where('username', '=', $request->username)->first();
         if (!empty($user)) return response()->json([
             'errors' => [
                 'usrename' => ['Username da ton tai']
@@ -37,7 +38,31 @@ class UserController extends Controller
         return 'done';
     }
 
+    public function index()
+    {
+        return view('user.login');
+    }
     public function login(Request $request)
     {
+        if (Auth::attempt(['username' => $request->username, 'password' => $request->password])) {
+            $user = User::where('username', '=', $request->username)->first();
+            Auth::login($user);
+            return redirect('/');
+        }
+        $request->session()->flash('status', 'Đăng nhập thất bại!');
+        return redirect('/login');
+    }
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return response()->json([
+            'message' => 'Logout succcess',
+        ], 200);
     }
 }

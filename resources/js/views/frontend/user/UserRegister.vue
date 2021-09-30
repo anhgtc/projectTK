@@ -13,7 +13,7 @@
             </div>
             <div class="text-grey-dark mt-6">
                 Already have an account?
-                <a class="no-underline border-b border-blue-500  text-blue-500">
+                <a href="/login" class="no-underline border-b border-blue-500  text-blue-500">
                     Log in
                 </a>.
             </div>

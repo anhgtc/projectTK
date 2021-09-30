@@ -11,7 +11,7 @@ class BackendCommentController extends Controller
 {
     public function index()
     {
-        $comments = DB::table('comments')->select('*')->get();
+        $comments = Comment::select('*')->get();
         $data = [
             'comments' => $comments
         ];
@@ -20,7 +20,7 @@ class BackendCommentController extends Controller
 
     public function delete($id)
     {
-        DB::table('comments')->where('id', '=', $id)->delete();
+        Comment::where('id', '=', $id)->delete();
         return 'done';
     }
 }

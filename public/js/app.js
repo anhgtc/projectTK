@@ -24856,7 +24856,10 @@ var staticRenderFns = [
       _vm._v("\n            Already have an account?\n            "),
       _c(
         "a",
-        { staticClass: "no-underline border-b border-blue-500  text-blue-500" },
+        {
+          staticClass: "no-underline border-b border-blue-500  text-blue-500",
+          attrs: { href: "/login" }
+        },
         [_vm._v("\n                Log in\n            ")]
       ),
       _vm._v(".\n        ")
@@ -25327,7 +25330,8 @@ var render = function() {
             "a",
             {
               staticClass:
-                "lg:inline-block lg:ml-auto lg:mr-3 py-2 px-6 bg-gray-50 hover:bg-gray-100 text-sm text-gray-900 font-bold rounded-l-xl rounded-t-xl transition duration-200"
+                "lg:inline-block lg:ml-auto lg:mr-3 py-2 px-6 bg-gray-50 hover:bg-gray-100 text-sm text-gray-900 font-bold rounded-l-xl rounded-t-xl transition duration-200",
+              attrs: { href: "/login" }
             },
             [_vm._v("Sign In")]
           ),

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Comment;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
@@ -12,7 +13,7 @@ class BackendUserController extends Controller
 {
     public function index()
     {
-        $users = DB::table('users')->select('*')->get();
+        $users = User::select('*')->get();
         $data = [
             'users' => $users
         ];
@@ -21,7 +22,7 @@ class BackendUserController extends Controller
 
     public function show($id)
     {
-        $user = DB::table('users')->where('id', '=', $id)->first();
+        $user = User::where('id', '=', $id)->first();
         $data = [
             'user' => $user
         ];
@@ -33,20 +34,20 @@ class BackendUserController extends Controller
         $user = new User;
         $user->name = $request->name;
         $user->password = Hash::make($request->password);
-        DB::table('users')->where('id', '=', $id)->update(['name' => $user->name, 'password' => $user->password]);
+        User::where('id', '=', $id)->update(['name' => $user->name, 'password' => $user->password]);
         return 'done';
     }
 
     public function create(Request $request)
     {
-        $user = DB::table('users')->where('email', '=', $request->email)->first();
+        $user = User::where('email', '=', $request->email)->first();
         if (!empty($user)) return response()->json([
             'errors' => [
                 'email' => ['Email da ton tai']
             ],
             'message' => 'The given data was invalid.'
         ], 422);
-        $user = DB::table('users')->where('username', '=', $request->username)->first();
+        $user = User::where('username', '=', $request->username)->first();
         if (!empty($user)) return response()->json([
             'errors' => [
                 'usrename' => ['Username da ton tai']
@@ -68,8 +69,8 @@ class BackendUserController extends Controller
 
     public function delete($id)
     {
-        DB::table('comments')->where('id_user', '=', $id)->delete();
-        DB::table('users')->where('id', '=', $id)->delete();
+        Comment::where('id_user', '=', $id)->delete();
+        User::where('id', '=', $id)->delete();
         return 'done';
     }
 }
